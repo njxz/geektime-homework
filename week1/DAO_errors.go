@@ -1,4 +1,4 @@
-package geektime
+package week1
 
 import (
 	"database/sql"
