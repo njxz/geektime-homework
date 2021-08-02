@@ -16,16 +16,17 @@ func main() {
 	s := make(chan os.Signal)
 	signal.Notify(s, syscall.SIGHUP, syscall.SIGINT, syscall.SIGTERM,
 		syscall.SIGQUIT)
-	go func() {
+	g.Go(func()error{
 		select {
 		case sig := <-s:
 			switch sig {
 			case syscall.SIGHUP, syscall.SIGINT, syscall.SIGTERM:
 				fmt.Println("start shutdown server ", sig)
 				cancel()
+				return errors.New("signal Closed Server")
 			}
 		}
-	}()
+	})
 	g.Go(func() error {
 		return week2.Job1(ctx)
 	})
