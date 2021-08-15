@@ -27,7 +27,7 @@ func main() {
 	fmt.Println(pwd)
 	c := config.New(
 		config.WithSource(
-			file.NewSource("F:/github/geektime/week3/mydemo/configs/config.json"),
+			file.NewSource("F:/github/geektime/week4/mydemo/configs/config.json"),
 		),
 	)
 	if err := c.Load(); err != nil {
