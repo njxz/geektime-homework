@@ -3,6 +3,6 @@
     "grpc": "0.0.0.0:9000"
   },
   "database":{
-    "mysql": "127.0.0.1:3306"
+    "mysql": "root:pxhcftc123@tcp(127.0.0.1:3306)/mydemo"
   }
 }

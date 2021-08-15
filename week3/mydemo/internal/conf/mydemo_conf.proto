@@ -6,12 +6,12 @@ option go_package="mydemo/internal/conf;conf";
 
 
 message MydemoConfig{
-  Database server=1;
-  Server database=2;
+  MydemoDatabase database=1;
+  MyDemoServer server=2;
 }
-message Server{
+message MyDemoServer{
   string grpc=1;
 }
-message Database{
+message MydemoDatabase{
   string mysql=1;
 }

@@ -5,12 +5,21 @@ package mydemo.v1;
 option go_package="mydemo/api/mydemo/v1;v1";
 
 service Hello{
-  rpc SayHello(HelloRequest)returns(HelloMessage);
+  rpc CheckName(IdRequest)returns(IdResponse);
+  rpc InsertName(InsertReq) returns(InsertRes);
 }
 
-message HelloRequest{
+message IdRequest{
   int64 id=1;
 }
-message HelloMessage{
-  string message=1;
+message IdResponse{
+  string name=1;
+}
+
+message InsertReq{
+  int64 id=1;
+  string name=2;
+}
+message InsertRes{
+  bool status=1;
 }

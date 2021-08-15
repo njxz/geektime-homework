@@ -5,14 +5,14 @@
 package main
 
 import (
+	"geektime/internal/biz"
+	"geektime/internal/conf"
+	"geektime/internal/data"
+	"geektime/internal/server"
+	"geektime/internal/service"
 	"github.com/go-kratos/kratos/v2"
 	"github.com/go-kratos/kratos/v2/log"
 	"github.com/google/wire"
-	"mydemo/internal/biz"
-	"mydemo/internal/conf"
-	"mydemo/internal/data"
-	"mydemo/internal/server"
-	"mydemo/internal/service"
 )
 
 // initApp init kratos application.
