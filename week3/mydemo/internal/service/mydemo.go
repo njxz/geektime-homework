@@ -6,7 +6,7 @@ import (
 	"geektime/internal/data"
 )
 
-func NewDemo(data2 data.Data) *Mydemo {
+func NewDemo(data2 *data.Data) *Mydemo {
 	return &Mydemo{
 		dao: data2,
 	}
@@ -15,7 +15,7 @@ func NewDemo(data2 data.Data) *Mydemo {
 
 type Mydemo struct {
 	v1.UnimplementedHelloServer
-	dao data.Data
+	dao *data.Data
 }
 
 func (d Mydemo) CheckName(ctx context.Context, in *v1.IdRequest) (*v1.IdResponse, error) {
