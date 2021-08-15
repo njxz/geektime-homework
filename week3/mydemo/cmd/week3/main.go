@@ -25,7 +25,7 @@ func main() {
 	if err := c.Load(); err != nil {
 		panic(err)
 	}
-	fmt.Println(c.Value("server"))
+	fmt.Println(c.Value("server.grpc"))
 	var bc conf.MydemoConfig
 	if err := c.Scan(&bc); err != nil {
 		panic(err)
