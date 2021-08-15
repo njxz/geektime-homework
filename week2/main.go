@@ -3,7 +3,6 @@ package main
 import (
 	"context"
 	"fmt"
-	"geektime/week2"
 	"golang.org/x/sync/errgroup"
 	"os"
 	"os/signal"
@@ -16,22 +15,27 @@ func main() {
 	s := make(chan os.Signal)
 	signal.Notify(s, syscall.SIGHUP, syscall.SIGINT, syscall.SIGTERM,
 		syscall.SIGQUIT)
-	g.Go(func()error{
+	go func() {
 		select {
 		case sig := <-s:
 			switch sig {
 			case syscall.SIGHUP, syscall.SIGINT, syscall.SIGTERM:
 				fmt.Println("start shutdown server ", sig)
 				cancel()
-				return errors.New("signal Closed Server")
 			}
 		}
+	}()
+
+	g.Go(func() error {
+		return Job1(ctx)
+	})
+	job2 := &Service{Ctx: ctx}
+
+	g.Go(func() error {
+		return job2.Start()
 	})
 	g.Go(func() error {
-		return week2.Job1(ctx)
-	})
-	g.Go(func() error {
-		return week2.Job2(ctx)
+		return job2.Stop()
 	})
 	if err := g.Wait(); err != nil {
 		fmt.Println(err)
