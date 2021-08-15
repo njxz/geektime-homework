@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+package mydemo.v1;
+
+option go_package="mydemo/api/mydemo/v1;v1";
+
+service Hello{
+  rpc SayHello(HelloRequest)returns(HelloMessage);
+}
+
+message HelloRequest{
+  int64 id=1;
+}
+message HelloMessage{
+  string message=1;
+}
